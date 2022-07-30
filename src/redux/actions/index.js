@@ -10,8 +10,13 @@ const getWalletAPI = (payload) => ({
   payload,
 });
 
+export const saveExpenseAction = (payload) => ({
+  type: 'EXPENSE_LIST',
+  payload,
+});
+
 export const requestWalletThunk = () => async (dispatch) => {
-  const currencies = await fetchCurrenciesAPI();
-  const teste = (Object.keys(currencies).filter((item) => item !== 'USDT'));
-  dispatch(getWalletAPI(teste));
+  const reponse = await fetchCurrenciesAPI();
+  const currencies = (Object.keys(reponse).filter((item) => item !== 'USDT'));
+  dispatch(getWalletAPI(currencies));
 };
