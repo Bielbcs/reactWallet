@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import propTypes from 'prop-types';
-import EditDeleteButton from './EditDeleteButton';
+import DeleteButton from './DeleteButton';
 
 export default class Expense extends Component {
   render() {
@@ -20,7 +20,7 @@ export default class Expense extends Component {
           <td>{ Number(specificExchange.ask).toFixed(2) }</td>
           <td>{ convertedValue.toFixed(2) }</td>
           <td>Real</td>
-          <EditDeleteButton data={ data } />
+          <DeleteButton data={ data } />
         </tr>
       </tbody>
     );

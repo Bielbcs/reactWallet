@@ -20,6 +20,16 @@ export const deleteItem = (payload) => ({
   payload,
 });
 
+export const editItem = (payload) => ({
+  type: 'EDIT_ITEM',
+  payload,
+});
+
+export const finishEditionAction = (payload) => ({
+  type: 'FINISH_EDITION',
+  payload,
+});
+
 export const requestWalletThunk = () => async (dispatch) => {
   const reponse = await fetchCurrenciesAPI();
   const currencies = (Object.keys(reponse).filter((item) => item !== 'USDT'));

@@ -22,6 +22,18 @@ const wallet = (state = INITIAL_STATE, action) => {
       ...state,
       expenses: action.payload,
     };
+  case 'EDIT_ITEM':
+    return {
+      ...state,
+      editor: true,
+      idToEdit: action.payload,
+    };
+  case 'FINISH_EDITION':
+    return {
+      ...state,
+      editor: false,
+      expenses: action.payload,
+    };
   default:
     return state;
   }
