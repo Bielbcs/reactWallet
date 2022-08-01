@@ -8,9 +8,9 @@ class WalletForm extends Component {
   state = {
     valueInput: '',
     description: '',
-    currency: 'USD',
-    method: 'Dinheiro',
-    tag: 'Alimentação',
+    currency: '',
+    method: '',
+    tag: '',
   };
 
   componentDidMount() {
@@ -23,13 +23,20 @@ class WalletForm extends Component {
       ? event.target.checked : event.target.value });
   };
 
+  shouldButtonDisable = () => {
+    const { valueInput, description, currency, method, tag } = this.state;
+    const statesArray = [valueInput, description, currency, method, tag];
+    if (statesArray.some((state) => state === '')) return true;
+    return false;
+  }
+
   resetAllInputs = () => {
     this.setState({
       valueInput: '',
       description: '',
-      currency: 'USD',
-      method: 'dinheiro',
-      tag: 'alimentacao',
+      currency: '',
+      method: '',
+      tag: '',
     });
   }
 
@@ -60,6 +67,7 @@ class WalletForm extends Component {
         <form>
 
           <label htmlFor="value">
+            Valor:
             <input
               type="number"
               id="value"
@@ -70,6 +78,7 @@ class WalletForm extends Component {
             />
           </label>
           <label htmlFor="description">
+            Descrição:
             <input
               type="text"
               name="description"
@@ -87,6 +96,7 @@ class WalletForm extends Component {
             data-testid="currency-input"
             onChange={ this.onInputChange }
           >
+            <option>Selecione uma moeda...</option>
             {currenciesList.map((currencie) => (
               <option
                 key={ currencie }
@@ -103,6 +113,7 @@ class WalletForm extends Component {
             data-testid="method-input"
             onChange={ this.onInputChange }
           >
+            <option>Selecione um metódo...</option>
             <option value="Dinheiro">Dinheiro</option>
             <option value="Cartão de crédito">Cartão de crédito</option>
             <option value="Cartão de débito">Cartão de débito</option>
@@ -115,6 +126,7 @@ class WalletForm extends Component {
             value={ tag }
             onChange={ this.onInputChange }
           >
+            <option>Selecione uma tag...</option>
             <option value="Alimentação">Alimentação</option>
             <option value="Lazer">Lazer</option>
             <option value="Trabalho">Trabalho</option>
@@ -125,6 +137,7 @@ class WalletForm extends Component {
           <button
             type="submit"
             onClick={ this.saveOnGlobalState }
+            disabled={ this.shouldButtonDisable() }
           >
             Adicionar despesa
           </button>
