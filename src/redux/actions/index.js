@@ -15,6 +15,11 @@ export const saveExpenseAction = (payload) => ({
   payload,
 });
 
+export const deleteItem = (payload) => ({
+  type: 'DELETE_ITEM',
+  payload,
+});
+
 export const requestWalletThunk = () => async (dispatch) => {
   const reponse = await fetchCurrenciesAPI();
   const currencies = (Object.keys(reponse).filter((item) => item !== 'USDT'));
