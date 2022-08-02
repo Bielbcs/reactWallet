@@ -20,8 +20,7 @@ class WalletForm extends Component {
   }
 
   onInputChange = (event) => {
-    this.setState({ [event.target.name]: event.target.type === 'checkbox'
-      ? event.target.checked : event.target.value });
+    this.setState({ [event.target.name]: event.target.value });
   };
 
   resetAllInputs = () => {
