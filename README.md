@@ -1,4 +1,4 @@
-# ❓ Projeto Wallet Redux ❓
+# 💲 Projeto Wallet Redux 💲
 
 https://wallet-ruddy.vercel.app/
 
