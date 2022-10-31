@@ -12,3 +12,30 @@
 .inputs-container select {
   margin-left: 10px;
 }
+
+@media ( max-width : 700px ) {
+
+  .wallet-form-container {
+    flex-direction: column;
+    row-gap: 10px;
+  }
+
+  .inputs-container {
+    text-align: center;
+  }
+
+  .inputs-container select {
+    margin-bottom: 5px;
+    width: 200px;
+  }
+
+  .test {
+    margin-bottom: 15px;
+  }
+
+  .buttons-container button {
+    margin-bottom: 10px;
+    margin-left: 9px;
+  }
+
+}

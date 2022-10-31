@@ -17,12 +17,23 @@
   align-items: center;
   background-color: #222;
   border: 3px solid #ffc107;
-  box-shadow: 2px 2px 2px #ffc107;
   border-radius: 9px;
+  box-shadow: 2px 2px 2px #ffc107;
   color: #d9d9d9;
   display: flex;
   flex-direction: column;
   height: 50vh;
   justify-content: center;
   width: 70vh;
+}
+
+@media ( max-width : 700px ) {
+
+  .login-form {
+    width: 300px;
+  }
+
+  .login-form input {
+    width: 175px;
+  }
 }

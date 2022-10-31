@@ -8,22 +8,24 @@ class Table extends Component {
   render() {
     const { expenses } = this.props;
     return (
-      <table className="table table-dark table-striped table-hover">
-        <thead>
-          <tr>
-            <th>Descrição</th>
-            <th>Tag</th>
-            <th>Método de pagamento</th>
-            <th>Valor</th>
-            <th>Moeda</th>
-            <th>Câmbio utilizado</th>
-            <th>Valor convertido</th>
-            <th>Moeda de conversão</th>
-            <th>Editar/Excluir</th>
-          </tr>
-        </thead>
-        { expenses.map((exp, index) => <Expense key={ index } data={ exp } />) }
-      </table>
+      <div className="table-test">
+        <table className="table table-dark table-striped table-hover">
+          <thead>
+            <tr className="tr-container">
+              <th>Descrição</th>
+              <th>Tag</th>
+              <th>Método de pagamento</th>
+              <th>Valor</th>
+              <th>Moeda</th>
+              <th>Câmbio utilizado</th>
+              <th>Valor convertido</th>
+              <th>Moeda de conversão</th>
+              <th>Editar/Excluir</th>
+            </tr>
+          </thead>
+          { expenses.map((exp, index) => <Expense key={ index } data={ exp } />) }
+        </table>
+      </div>
     );
   }
 }

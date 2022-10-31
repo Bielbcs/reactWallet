@@ -154,7 +154,7 @@ class WalletForm extends Component {
           <button
             type="submit"
             onClick={ !editor ? this.saveOnGlobalState : this.editExpense }
-            className="btn btn-warning"
+            className="btn btn-warning test"
           >
             { editor ? 'Editar despesa' : 'Adicionar despesa' }
           </button>

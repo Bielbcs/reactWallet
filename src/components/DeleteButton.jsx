@@ -19,7 +19,7 @@ class DeleteButton extends Component {
     const { data } = this.props;
 
     return (
-      <td>
+      <td className="buttons-container">
         <button
           type="button"
           data-testid="edit-btn"
