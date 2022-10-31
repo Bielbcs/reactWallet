@@ -21,19 +21,22 @@ class DeleteButton extends Component {
     return (
       <td>
         <button
-          key={ data.id }
-          data-testid="delete-btn"
-          type="button"
-          onClick={ this.deleteFunction }
-        >
-          Delete
-        </button>
-        <button
           type="button"
           data-testid="edit-btn"
+          className="btn btn-secondary"
           onClick={ this.editFunction }
         >
           Editar
+        </button>
+        <button
+          key={ data.id }
+          data-testid="delete-btn"
+          style={ { marginLeft: '5px' } }
+          type="button"
+          onClick={ this.deleteFunction }
+          className="btn btn-danger"
+        >
+          Deletar
         </button>
       </td>
     );

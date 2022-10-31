@@ -1,0 +1,14 @@
+.wallet-form-container {
+  align-items: center;
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.inputs-container label {
+  margin-left: 10px;
+}
+
+.inputs-container select {
+  margin-left: 10px;
+}

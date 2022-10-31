@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import propTypes from 'prop-types';
+import '../styles/Header.css';
 
 class Header extends Component {
   pegaNumeros = () => {
@@ -16,10 +17,12 @@ class Header extends Component {
     const { email } = this.props;
     this.pegaNumeros();
     return (
-      <div>
+      <div className="header-container">
         <span data-testid="email-field">{ email }</span>
-        <span data-testid="total-field">{this.pegaNumeros()}</span>
-        <span data-testid="header-currency-field">BRL</span>
+        <div>
+          <span data-testid="total-field">{this.pegaNumeros()}</span>
+          <span data-testid="header-currency-field">BRL</span>
+        </div>
       </div>
     );
   }

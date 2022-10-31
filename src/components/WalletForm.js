@@ -4,6 +4,7 @@ import propTypes from 'prop-types';
 import { finishEditionAction,
   requestWalletThunk, saveExpenseAction } from '../redux/actions';
 import fetchCurrenciesAPI from '../services';
+import '../styles/WalletForm.css';
 
 class WalletForm extends Component {
   state = {
@@ -67,6 +68,7 @@ class WalletForm extends Component {
       return exp;
     });
     finishEdition(newExpense);
+    this.resetAllInputs();
   }
 
   render() {
@@ -75,76 +77,84 @@ class WalletForm extends Component {
 
     return (
       <div>
-        <form>
+        <form className="wallet-form-container" autoComplete="off">
+          <div className="inputs-container">
+            <label className="form-label" htmlFor="value">
+              <input
+                className="form-control"
+                placeholder="Valor"
+                type="number"
+                id="value"
+                name="valueInput"
+                value={ valueInput }
+                data-testid="value-input"
+                onChange={ this.onInputChange }
+              />
+            </label>
+            <label className="form-label" htmlFor="description">
+              <input
+                className="form-control"
+                type="text"
+                placeholder="Descrição"
+                name="description"
+                value={ description }
+                id="description"
+                data-testid="description-input"
+                onChange={ this.onInputChange }
+              />
+            </label>
 
-          <label htmlFor="value">
-            Valor:
-            <input
-              type="number"
-              id="value"
-              name="valueInput"
-              value={ valueInput }
-              data-testid="value-input"
+            <select
+              name="currency"
+              className="btn btn-secondary dropdown-toggle"
+              id="currency"
+              value={ currency }
+              data-testid="currency-input"
               onChange={ this.onInputChange }
-            />
-          </label>
-          <label htmlFor="description">
-            Descrição:
-            <input
-              type="text"
-              name="description"
-              value={ description }
-              id="description"
-              data-testid="description-input"
+            >
+              {currenciesList.map((currencie) => (
+                <option
+                  className="dropdown-item"
+                  key={ currencie }
+                  value={ currencie }
+                >
+                  {currencie}
+                </option>))}
+            </select>
+
+            <select
+              name="method"
+              id="method"
+              value={ method }
+              className="btn btn-secondary dropdown-toggle"
+              data-testid="method-input"
               onChange={ this.onInputChange }
-            />
-          </label>
+            >
+              <option value="Dinheiro">Dinheiro</option>
+              <option value="Cartão de crédito">Cartão de crédito</option>
+              <option value="Cartão de débito">Cartão de débito</option>
+            </select>
 
-          <select
-            name="currency"
-            id="currency"
-            value={ currency }
-            data-testid="currency-input"
-            onChange={ this.onInputChange }
-          >
-            {currenciesList.map((currencie) => (
-              <option
-                key={ currencie }
-                value={ currencie }
-              >
-                {currencie}
-              </option>))}
-          </select>
-
-          <select
-            name="method"
-            id="method"
-            value={ method }
-            data-testid="method-input"
-            onChange={ this.onInputChange }
-          >
-            <option value="Dinheiro">Dinheiro</option>
-            <option value="Cartão de crédito">Cartão de crédito</option>
-            <option value="Cartão de débito">Cartão de débito</option>
-          </select>
-
-          <select
-            name="tag"
-            id="category"
-            data-testid="tag-input"
-            value={ tag }
-            onChange={ this.onInputChange }
-          >
-            <option value="Alimentação">Alimentação</option>
-            <option value="Lazer">Lazer</option>
-            <option value="Trabalho">Trabalho</option>
-            <option value="Transporte">Transporte</option>
-            <option value="Saúde">Saúde</option>
-          </select>
+            <select
+              name="tag"
+              id="category"
+              data-testid="tag-input"
+              className="btn btn-secondary dropdown-toggle"
+              value={ tag }
+              onChange={ this.onInputChange }
+            >
+              <option value="Alimentação">Alimentação</option>
+              <option value="Lazer">Lazer</option>
+              <option value="Trabalho">Trabalho</option>
+              <option value="Transporte">Transporte</option>
+              <option value="Saúde">Saúde</option>
+            </select>
+          </div>
 
           <button
             type="submit"
             onClick={ !editor ? this.saveOnGlobalState : this.editExpense }
+            className="btn btn-warning"
           >
             { editor ? 'Editar despesa' : 'Adicionar despesa' }
           </button>

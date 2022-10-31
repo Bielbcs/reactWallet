@@ -2,12 +2,13 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import propTypes from 'prop-types';
 import Expense from './Expense';
+import '../styles/Table.css';
 
 class Table extends Component {
   render() {
     const { expenses } = this.props;
     return (
-      <table>
+      <table className="table table-dark table-striped table-hover">
         <thead>
           <tr>
             <th>Descrição</th>
